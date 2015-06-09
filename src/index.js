@@ -1,19 +1,26 @@
 var React = require('react');
+
+
 var App = React.createClass({
 	getInitialState: function() {
 		return {
-			txt:  ' '
+			cl: 1,
+			vd: 10
 		}
 	},	
 	update: function(e) {
-		this.setState({txt: e.target.value});
+		this.setState({
+			cl: this.refs.cl.getDOMNode().value,
+			vd: this.refs.vd.getDOMNode().value,
+		});
 	},
 	render:function(){
 		return(
 			<div>
-			{this.state.txt}
-			<hr />
-			<Slider update={this.update} />
+			<Slider ref = "cl" update={this.update} />
+			<label>{this.state.cl}</label>
+			<Slider ref = "vd" update={this.update} />
+			<label>{this.state.vd}</label>
 			</div>
 			)
 		}
@@ -22,7 +29,7 @@ var App = React.createClass({
 var Slider = React.createClass({
 	render:function() {
 		return(
-			<input type="range" min="0" max="255" onChange={this.props.update} />
+			<input type="range" min="1" max="255" onChange={this.props.update} />
 			);
 	}
 });
