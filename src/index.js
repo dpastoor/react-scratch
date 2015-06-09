@@ -2,7 +2,7 @@ var React = require('react');
 var App = React.createClass({
 	getInitialState: function() {
 		return {
-			txt: 'the state txt'
+			txt:  ' '
 		}
 	},	
 	update: function(e) {
@@ -11,10 +11,19 @@ var App = React.createClass({
 	render:function(){
 		return(
 			<div>
-				<input type="text" onChange={this.update} />
-				<h1>{this.state.txt}</h1>
+			{this.state.txt}
+			<hr />
+			<Slider update={this.update} />
 			</div>
 			)
+		}
+});
+
+var Slider = React.createClass({
+	render:function() {
+		return(
+			<input type="range" min="0" max="255" onChange={this.props.update} />
+			);
 	}
 });
-React.render(<App txt="this is the txt prop" />, document.getElementById('root'));
+React.render(<App />, document.getElementById('root'));
