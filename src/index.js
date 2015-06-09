@@ -5,10 +5,14 @@ var App = React.createClass({
 			txt: 'the state txt'
 		}
 	},	
+	update: function(e) {
+		this.setState({txt: e.target.value});
+	},
 	render:function(){
 		return(
 			<div>
-				<h1>{this.props.txt}</h1>
+				<input type="text" onChange={this.update} />
+				<h1>{this.state.txt}</h1>
 			</div>
 			)
 	}
