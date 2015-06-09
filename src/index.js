@@ -10,8 +10,8 @@ var App = React.createClass({
 	},	
 	update: function(e) {
 		this.setState({
-			cl: this.refs.cl.getDOMNode().value,
-			vd: this.refs.vd.getDOMNode().value,
+			cl: this.refs.cl.refs.inp.getDOMNode().value,
+			vd: this.refs.vd.refs.inp.getDOMNode().value,
 		});
 	},
 	render:function(){
@@ -29,7 +29,7 @@ var App = React.createClass({
 var Slider = React.createClass({
 	render:function() {
 		return(
-			<input type="range" min="1" max="255" onChange={this.props.update} />
+			<input ref ="inp" type="range" min="1" max="255" onChange={this.props.update} />
 			);
 	}
 });
